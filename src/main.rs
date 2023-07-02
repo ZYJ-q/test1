@@ -3,9 +3,11 @@ use std::collections::VecDeque;
 use csv::Reader;
 use net_worth::actors::trade_mapper;
 use serde_json::{Map, Value};
+use net_worth::actors::*;
 const CSV_PATH:&str = "./btc2.csv";
 
 fn main(){
+    init();
     let mut data = Reader::from_path(CSV_PATH).unwrap();
     let mut equity_histories: VecDeque<Value> = VecDeque::new();
     
