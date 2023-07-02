@@ -69,7 +69,7 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"INSERT IGNORE INTO test_one_bian_xh01_equity (name, time, equity, type)
+      r"INSERT IGNORE INTO test_two_bian_xh01_equity (name, time, equity, type)
       VALUES (:name, :time, :equity, :type)",
       equitys.iter().map(|p| params! {
         "name" => &p["name"],
