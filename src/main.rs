@@ -18,7 +18,7 @@ fn main(){
             // println!("{}", sr.get(3).unwrap()); 
             equity_bian_map.insert(String::from("time"), Value::from(sr.get(0).unwrap())); 
             equity_bian_map.insert(String::from("name"), Value::from(7));
-            equity_bian_map.insert(String::from("equity"), Value::from(sr.get(3).unwrap())); 
+            equity_bian_map.insert(String::from("equity"), Value::from(sr.get(1).unwrap())); 
             equity_histories.push_back(Value::from(equity_bian_map));   
         }
     });
