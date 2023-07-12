@@ -90,6 +90,35 @@ impl TradeMapper {
       }
     }
   }
+
+
+
+  pub fn insert_bybit_equity(equitys:Vec<Value>) -> bool {
+    // 连接数据库
+    let mut conn = get_connect();
+    // let query_id = conn.exec_first(, params)
+
+    let flag = conn.exec_batch(
+      r"INSERT IGNORE INTO bybit_equitys (name, time, equity)
+      VALUES (:name, :time, :equity)",
+      equitys.iter().map(|p| params! {
+        "name" => &p["name"],
+        "time" => &p["time"],
+        "equity" => &p["equity"]
+      })
+    );
+
+    match flag {
+      Ok(_c) => {
+        println!("insert success!");
+        return true;
+      },
+      Err(e) => {
+        eprintln!("error:{}", e);
+        return false;
+      }
+    }
+  }
 }
 
 
