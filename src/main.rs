@@ -17,8 +17,8 @@ fn main(){
             let mut equity_bian_map: Map<String, Value> = Map::new();
             // println!("{}", sr.get(3).unwrap()); 
             equity_bian_map.insert(String::from("time"), Value::from(sr.get(0).unwrap())); 
-            equity_bian_map.insert(String::from("name"), Value::from(3));
-            equity_bian_map.insert(String::from("equity"), Value::from(sr.get(4).unwrap())); 
+            equity_bian_map.insert(String::from("name"), Value::from(4));
+            equity_bian_map.insert(String::from("equity"), Value::from(sr.get(1).unwrap())); 
             equity_bian_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_bian_map));   
         }
