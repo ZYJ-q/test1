@@ -69,7 +69,7 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"INSERT IGNORE INTO test_four_bian_xh02_equity (name, time, equity, type)
+      r"INSERT IGNORE INTO bian_equity (name, time, equity, type)
       VALUES (:name, :time, :equity, :type)",
       equitys.iter().map(|p| params! {
         "name" => &p["name"],
@@ -91,7 +91,8 @@ impl TradeMapper {
     }
   }
 
-  pub fn insert_equity_equity(equitys:Vec<Value>) -> bool {
+
+  pub fn insert_bybit_equity(equitys:Vec<Value>) -> bool {
     // 连接数据库
     let mut conn = get_connect();
     // let query_id = conn.exec_first(, params)
