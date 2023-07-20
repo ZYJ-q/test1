@@ -98,7 +98,7 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"update test_bian_equitys set time=:time, equity=:equity where id >=25105 and id <=23982",
+      r"update test_bian_equitys set time=:time, equity=:equity where id >=23982 and id <=25105",
       equitys.iter().map(|p| params! {
         "time" => &p["time"],
         "equity" => &p["equity"]
