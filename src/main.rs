@@ -17,16 +17,16 @@ fn main(){
             let mut equity_bian_map: Map<String, Value> = Map::new();
             // println!("{}", sr.get(3).unwrap()); 
             equity_bian_map.insert(String::from("time"), Value::from(sr.get(0).unwrap())); 
-            // equity_bian_map.insert(String::from("name"), Value::from(13));
+            equity_bian_map.insert(String::from("name"), Value::from(7));
             equity_bian_map.insert(String::from("equity"), Value::from(sr.get(2).unwrap())); 
-            // equity_bian_map.insert(String::from("type"), Value::from("futures"));
+            equity_bian_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_bian_map));   
         }
     });
 
 
     // println!("数据{:?}",Vec::from(equity_histories.clone()));
-    let res = trade_mapper::TradeMapper::insert_bybit_equity(Vec::from(equity_histories.clone()));
+    let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
 
     println!("插入数据是否成功{}, {:?}",res,Vec::from(equity_histories.clone()));
 

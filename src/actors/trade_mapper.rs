@@ -69,7 +69,7 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"INSERT IGNORE INTO bian_equity (name, time, equity, type)
+      r"INSERT IGNORE INTO test_bian_equitys (name, time, equity, type)
       VALUES (:name, :time, :equity, :type)",
       equitys.iter().map(|p| params! {
         "name" => &p["name"],
@@ -98,8 +98,10 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"update test_bian_equitys set time=:time, equity=:equity where id >=23982 and id <=25105",
+      r"INSERT IGNORE INTO bybit_equitys (name, time, equity)
+      VALUES (:name, :time, :equity)",
       equitys.iter().map(|p| params! {
+        "name" => &p["name"],
         "time" => &p["time"],
         "equity" => &p["equity"]
       })
