@@ -98,10 +98,8 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"INSERT IGNORE INTO bybit_equitys (name, time, equity)
-      VALUES (:name, :time, :equity)",
+      r"update test_bian_equitys set time=:time, equity=:equity where id >=25105 and id <=23982",
       equitys.iter().map(|p| params! {
-        "name" => &p["name"],
         "time" => &p["time"],
         "equity" => &p["equity"]
       })
