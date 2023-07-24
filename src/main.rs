@@ -13,18 +13,19 @@ fn main(){
     let mut equity_histories: VecDeque<Value> = VecDeque::new();
     let data = trade_mapper::TradeMapper::get_equity().unwrap();
 
-    println!("获取到的权益数据{:?}", data );
+    // println!("获取到的权益数据{:?}", data );
 
     for i in data{
         let mut equity_bian_map: Map<String, Value> = Map::new();
         let name = i.name;
         
         if name == 12{
-            let new_equity: f64 = i.equity.parse().unwrap();
+            let new_equity: f64 = i.equity.as_str().parse().unwrap();
             let equity = new_equity - 4535.7;
-            let time = i.time;
+            println!("权益{}", equity);
+            let time = i.time.as_str();
             let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
-            let r#type = i.r#type;
+            let r#type = i.r#type.as_str();
             let new_time = format!("{}", t);
 
             println!("时间{}", t);
@@ -37,10 +38,11 @@ fn main(){
             
 
         } else {
-            let equity: f64 = i.equity.parse().unwrap();
-        let time = i.time;
+            let equity: f64 = i.equity.as_str().parse().unwrap();
+            println!("权益{}", equity);
+        let time = i.time.as_str();
         let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
-            let r#type = i.r#type;
+            let r#type = i.r#type.as_str();
             let new_time = format!("{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
             equity_bian_map.insert(String::from("equity"), Value::from(equity));
