@@ -51,9 +51,8 @@ pub struct Equity {
     pub id: u64,
     pub name: String,
     pub time: String,
-    pub equity_eth: String,
-    pub equity: String,
-    pub prod_id: String
+    pub equity: u64,
+    pub r#type: String
 }
 
 

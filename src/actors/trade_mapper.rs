@@ -55,9 +55,9 @@ impl TradeMapper {
     // 连接数据库
     let mut conn = get_connect();
     let res = conn.query_map(
-      r"select * from equity",
-      |(id, name, time, equity_eth, equity, prod_id)| {
-        Equity{ id, name, time, equity_eth, equity, prod_id }
+      r"select * from total_bian_equity",
+      |(id, name, time, equity, r#type)| {
+        Equity{ id, name, time, equity, r#type}
       } 
     ).unwrap();
     return Ok(res);
