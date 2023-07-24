@@ -39,10 +39,11 @@ fn main(){
 
         } else {
             let equity = i.equity;
-            println!("权益{}", equity);
-        let time = i.time.as_str();
+            let new_equity: f64 = equity.parse().unwrap();
+            println!("权益{}", new_equity);
+        let time = i.time;
         let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
-            let r#type = i.r#type.as_str();
+            let r#type = i.r#type;
             let new_time = format!("{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
             equity_bian_map.insert(String::from("equity"), Value::from(equity));
