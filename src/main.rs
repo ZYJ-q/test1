@@ -20,36 +20,45 @@ fn main(){
         let name = i.name;
         
         if name == 12{
-            let new_equity: f64 = i.equity.as_str().parse().unwrap();
-            let equity = new_equity - 4535.7;
-            println!("权益{}", equity);
-            let time = i.time.as_str();
-            let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
-            let r#type = i.r#type.as_str();
+            let equity = i.equity;
+            let new_equity = &equity[1..equity.len()-1];
+            println!("处理之后权益{}", new_equity);
+            let equitys:f64 = new_equity.parse().unwrap();
+            let new_equitys = equitys - 4535.7;
+            println!("权益1111{}", equitys);
+        let time = i.time;
+        let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M:%S").unwrap();
+            let r#type = i.r#type;
+            let new_type = &r#type[1..r#type.len()-1];
             let new_time = format!("{}", t);
-
-            println!("时间{}", t);
+            println!("时间{}", new_time);
+            
+            println!("权益{}", new_equitys);
 
             
             equity_bian_map.insert(String::from("name"), Value::from(name));
-            equity_bian_map.insert(String::from("equity"), Value::from(equity));
+            equity_bian_map.insert(String::from("equity"), Value::from(new_equitys));
             equity_bian_map.insert(String::from("time"), Value::from(new_time));
-            equity_bian_map.insert(String::from("type"), Value::from(r#type));
+            equity_bian_map.insert(String::from("type"), Value::from(new_type));
             
 
         } else {
             let equity = i.equity;
             println!("权益{}", equity);
-            let new_equity = &equity[0..equity.len()-1];
+            let new_equity = &equity[1..equity.len()-1];
             println!("处理之后权益{}", new_equity);
+            let equitys:f64 = new_equity.parse().unwrap();
+            println!("权益1111{}", equitys);
         let time = i.time;
-        let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
+        let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M:%S").unwrap();
             let r#type = i.r#type;
+            let new_type = &r#type[1..r#type.len()-1];
             let new_time = format!("{}", t);
+            println!("时间{}", new_time);
         equity_bian_map.insert(String::from("name"), Value::from(name));
-            equity_bian_map.insert(String::from("equity"), Value::from(equity));
+            equity_bian_map.insert(String::from("equity"), Value::from(equitys));
             equity_bian_map.insert(String::from("time"), Value::from(new_time));
-            equity_bian_map.insert(String::from("type"), Value::from(r#type));
+            equity_bian_map.insert(String::from("type"), Value::from(new_type));
             
         }
         
