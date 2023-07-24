@@ -4,15 +4,53 @@ use csv::Reader;
 use net_worth::actors::trade_mapper;
 use serde_json::{Map, Value};
 use net_worth::actors::*;
+use chrono::{DateTime, NaiveDateTime, Utc, Local};
 const CSV_PATH:&str = "./xh02_equity.csv";
 
 fn main(){
     init();
     // let mut data = Reader::from_path(CSV_PATH).unwrap();
-    // let mut equity_histories: VecDeque<Value> = VecDeque::new();
-    let data = trade_mapper::TradeMapper::get_equity();
+    let mut equity_histories: VecDeque<Value> = VecDeque::new();
+    let data = trade_mapper::TradeMapper::get_equity().unwrap();
 
     println!("获取到的权益数据{:?}", data );
+
+    for i in data{
+        let mut equity_bian_map: Map<String, Value> = Map::new();
+        let name = i.name;
+        
+        if name == 12{
+            let new_equity: f64 = i.equity.parse().unwrap();
+            let equity = new_equity - 4535.7;
+            let time = i.time;
+            let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
+            let r#type = i.r#type;
+            let new_time = format!("{}", t);
+
+            println!("时间{}", t);
+
+            
+            equity_bian_map.insert(String::from("name"), Value::from(name));
+            equity_bian_map.insert(String::from("equity"), Value::from(equity));
+            equity_bian_map.insert(String::from("time"), Value::from(new_time));
+            equity_bian_map.insert(String::from("type"), Value::from(r#type));
+            
+
+        } else {
+            let equity: f64 = i.equity.parse().unwrap();
+        let time = i.time;
+        let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
+            let r#type = i.r#type;
+            let new_time = format!("{}", t);
+        equity_bian_map.insert(String::from("name"), Value::from(name));
+            equity_bian_map.insert(String::from("equity"), Value::from(equity));
+            equity_bian_map.insert(String::from("time"), Value::from(new_time));
+            equity_bian_map.insert(String::from("type"), Value::from(r#type));
+            
+        }
+        
+
+    }
     
 
     // data.records().into_iter().for_each(|item|{
