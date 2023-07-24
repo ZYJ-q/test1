@@ -49,9 +49,9 @@ pub struct Trader {
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Equity {
     pub id: u64,
-    pub name: String,
+    pub name: u64,
     pub time: String,
-    pub equity: u64,
+    pub equity: String,
     pub r#type: String
 }
 
