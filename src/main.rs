@@ -38,7 +38,7 @@ fn main(){
             
 
         } else {
-            let equity: f64 = i.equity.as_str().parse().unwrap();
+            let equity = i.equity;
             println!("权益{}", equity);
         let time = i.time.as_str();
         let t = NaiveDateTime::parse_from_str(&time, "%Y/%m/%d %H:%M:%S").unwrap();
