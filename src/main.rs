@@ -50,7 +50,7 @@ fn main(){
             let equitys:f64 = new_equity.parse().unwrap();
         let time = i.time;
         println!("打印时间{}", time);
-        let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M:%S").unwrap();
+        let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M").unwrap();
             let r#type = i.r#type;
             let new_type = &r#type[1..r#type.len()-1];
             let new_time = format!("{}", t);
