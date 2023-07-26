@@ -25,7 +25,7 @@ fn main(){
             println!("处理之后权益{}", new_equity);
             let equitys:f64 = new_equity.parse().unwrap();
             let new_equitys = equitys - 4535.7;
-            println!("权益1111{}", equitys);
+            println!("权益1111{}", new_equitys);
         let time = i.time;
         // let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M:%S").unwrap();
             let r#type = i.r#type;
@@ -40,6 +40,8 @@ fn main(){
             equity_bian_map.insert(String::from("equity"), Value::from(new_equitys));
             equity_bian_map.insert(String::from("time"), Value::from(time));
             equity_bian_map.insert(String::from("type"), Value::from(new_type));
+            equity_histories.push_back(Value::from(equity_bian_map));     
+            
             
 
         } else {
@@ -59,6 +61,7 @@ fn main(){
             equity_bian_map.insert(String::from("equity"), Value::from(equitys));
             equity_bian_map.insert(String::from("time"), Value::from(time));
             equity_bian_map.insert(String::from("type"), Value::from(new_type));
+            equity_histories.push_back(Value::from(equity_bian_map));
             
         }
         
@@ -79,8 +82,8 @@ fn main(){
     // });
 
 
-    // println!("数据{:?}",Vec::from(equity_histories.clone()));
-    // let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
+    println!("数据{:?}",Vec::from(equity_histories.clone()));
+    let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
 
     // println!("插入数据是否成功{}, {:?}",res,Vec::from(equity_histories.clone()));
 
