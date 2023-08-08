@@ -14,22 +14,24 @@ fn main(){
     let data = trade_mapper::TradeMapper::get_equity().unwrap();
 
     // println!("获取到的权益数据{:?}", data );
+    let len = data.len() / 3;
 
-    for i in data{
+    for i in 0..len{
         let mut equity_bian_map: Map<String, Value> = Map::new();
-        let name = i.name;
+        let name = data[i * 3].name;
         
         if name == 12{
-            let equity = i.equity;
+            let equity = &data[i * 3].equity;
             let new_equity = &equity[1..equity.len()-1];
-            println!("处理之后权益{}", new_equity);
+            // println!("处理之后权益{}", new_equity);
             let equitys:f64 = new_equity.parse().unwrap();
             let new_equitys = equitys - 4535.7;
-            println!("权益1111{}", new_equitys);
-        let time = i.time;
+            // println!("权益1111{}", new_equitys);
+        let time = &data[i * 3].time;
         let new_time = &time[1..time.len()-1];
+        // let tims = new_time.timestamp_millis();
         // let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M:%S").unwrap();
-            let r#type = i.r#type;
+            let r#type = &data[i * 3].r#type;
             let new_type = &r#type[1..r#type.len()-1];
             // let new_time = format!("{}", t);
             // println!("时间{}", new_time);
@@ -46,16 +48,16 @@ fn main(){
             
 
         } else {
-            let equity = i.equity;
-            println!("权益{}", equity);
+            let equity = &data[i * 3].equity;
+            // println!("权益{}", equity);
             let new_equity = &equity[1..equity.len()-1];
-            println!("处理之后权益{}", new_equity);
+            // println!("处理之后权益{}", new_equity);
             let equitys:f64 = new_equity.parse().unwrap();
-        let time = i.time;
+        let time = &data[i * 3].time;
         let new_time = &time[1..time.len()-1];
-        println!("打印时间{}", time);
+        // println!("打印时间{}", time);
         // let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M").unwrap();
-            let r#type = i.r#type;
+            let r#type = &data[i * 3].r#type;
             let new_type = &r#type[1..r#type.len()-1];
             // let new_time = format!("{}", t);
             // println!("时间{}", new_time);
@@ -85,7 +87,7 @@ fn main(){
 
 
     println!("数据{:?}",Vec::from(equity_histories.clone()));
-    let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
+    // let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
 
     // println!("插入数据是否成功{}, {:?}",res,Vec::from(equity_histories.clone()));
 
