@@ -87,9 +87,9 @@ fn main(){
 
 
     println!("数据{:?}",Vec::from(equity_histories.clone()));
-    let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
+    // let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
 
-    println!("插入数据是否成功{}",res);
+    // println!("插入数据是否成功{}",res);
 
     
 
