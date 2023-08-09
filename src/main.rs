@@ -77,9 +77,10 @@ fn main(){
         if let Ok(sr) = item{
             let mut equity_bian_map: Map<String, Value> = Map::new();
             // println!("{}", sr.get(3).unwrap()); 
+            let equity:u64 = sr.get(3).unwrap().parse().unwrap();
             equity_bian_map.insert(String::from("time"), Value::from(sr.get(1).unwrap())); 
             equity_bian_map.insert(String::from("name"), Value::from(8));
-            equity_bian_map.insert(String::from("equity"), Value::from(sr.get(3).unwrap())); 
+            equity_bian_map.insert(String::from("equity"), Value::from(equity)); 
             equity_bian_map.insert(String::from("type"), Value::from("Papi"));
             equity_histories.push_back(Value::from(equity_bian_map));   
         }
