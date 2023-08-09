@@ -16,7 +16,7 @@ fn main(){
     // println!("获取到的权益数据{:?}", data );
     let len = data.len();
 
-    for i in 0..len{
+    for i in 0..1{
         let mut equity_bian_map: Map<String, Value> = Map::new();
         let name = data[i * 3].name;
         
@@ -68,10 +68,10 @@ fn main(){
             // let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M").unwrap();
             // let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
         // println!("时间1111111111{}", t);
-        equity_bian_map.insert(String::from("name"), Value::from(name));
-            equity_bian_map.insert(String::from("equity"), Value::from(equitys));
-            equity_bian_map.insert(String::from("time"), Value::from(new_time));
-            equity_bian_map.insert(String::from("type"), Value::from(new_type));
+        equity_bian_map.insert(String::from("name"), Value::from(17));
+            equity_bian_map.insert(String::from("equity"), Value::from(-494.0115540199997));
+            equity_bian_map.insert(String::from("time"), Value::from("2023/08/08 21:57:01"));
+            equity_bian_map.insert(String::from("type"), Value::from("Papi"));
             equity_histories.push_back(Value::from(equity_bian_map));
             
         }
@@ -99,9 +99,9 @@ fn main(){
 
 
     println!("数据{:?}",Vec::from(equity_histories.clone()));
-    let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
+    // let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
 
-    println!("插入数据是否成功{}",res);
+    // println!("插入数据是否成功{}",res);
 
     
 
