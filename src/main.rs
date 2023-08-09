@@ -65,12 +65,12 @@ fn main(){
             let new_type = &r#type[1..r#type.len()-1];
             // let new_time = format!("{}", t);
             // println!("时间{}", new_time);
-            let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M").unwrap();
-            let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
+            // let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M").unwrap();
+            // let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
         // println!("时间1111111111{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
             equity_bian_map.insert(String::from("equity"), Value::from(equitys));
-            equity_bian_map.insert(String::from("time"), Value::from(date_time));
+            equity_bian_map.insert(String::from("time"), Value::from(new_time));
             equity_bian_map.insert(String::from("type"), Value::from(new_type));
             equity_histories.push_back(Value::from(equity_bian_map));
             
