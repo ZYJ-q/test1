@@ -33,7 +33,7 @@ fn main(){
         // let new_times = format!("{}/{}/{} {}:{}:{}", ts[0], new_t_m, new_t_d, new_t_h, new_t_ms, new_t_s);
 
         // let tims = new_time.timestamp_millis();
-        let t = NaiveDateTime::parse_from_str(&new_times, "%-Y/%-m/%-d %-H:%-M:%-S").unwrap();
+        let t = NaiveDateTime::parse_from_str(&new_time, "%-Y/%-m/%-d %-H:%-M:%-S").unwrap();
         println!("时间1111111111{}", t);
             let r#type = &data[i].r#type;
             let new_type = &r#type[1..r#type.len()-1];
