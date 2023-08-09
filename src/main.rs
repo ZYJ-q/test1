@@ -65,7 +65,7 @@ fn main(){
             let new_type = &r#type[1..r#type.len()-1];
             // let new_time = format!("{}", t);
             // println!("时间{}", new_time);
-            let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M").unwrap();
+            let t = NaiveDateTime::parse_from_str(&new_time, "%Y-%m-%d %H:%M").unwrap();
         // println!("时间1111111111{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
             equity_bian_map.insert(String::from("equity"), Value::from(equitys));
