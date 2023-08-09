@@ -1,7 +1,6 @@
 use std::collections::VecDeque;
 
 use csv::Reader;
-use polars_lazy::dsl::StrpTimeOptions;
 use net_worth::actors::trade_mapper;
 use serde_json::{Map, Value};
 use net_worth::actors::*;
@@ -31,18 +30,11 @@ fn main(){
         let time = &data[i].time;
         let new_time = &time[1..time.len()-1];
 
-        let options = StrpTimeOptions {
-            fmt: Some("%-Y/%-m/%-d %-H:%-M:%-S".into()),
-            date_dtype: DataType::Date,
-            exact: true,
-            ..Default::default()
-
-        };
         // let new_times = format!("{}/{}/{} {}:{}:{}", ts[0], new_t_m, new_t_d, new_t_h, new_t_ms, new_t_s);
 
         // let tims = new_time.timestamp_millis();
-        let times = new_time.str().strptime(options);
-        println!("timessss{}", times);
+        let t = NaiveDateTime::parse_from_str(&new_times, "%-Y/%-m/%-d %-H:%-M:%-S").unwrap();
+        println!("时间1111111111{}", t);
             let r#type = &data[i].r#type;
             let new_type = &r#type[1..r#type.len()-1];
             // let new_time = format!("{}", t);
