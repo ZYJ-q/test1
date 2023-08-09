@@ -78,7 +78,7 @@ fn main(){
             let mut equity_bian_map: Map<String, Value> = Map::new();
             // println!("{}", sr.get(3).unwrap()); 
             let equity = sr.get(3).unwrap();
-            let new_equitys: u64 = equity.parse().unwrap();
+            let new_equitys:f64 = equity.parse().unwrap();
             equity_bian_map.insert(String::from("time"), Value::from(sr.get(1).unwrap())); 
             equity_bian_map.insert(String::from("name"), Value::from(8));
             equity_bian_map.insert(String::from("equity"), Value::from(new_equitys)); 
