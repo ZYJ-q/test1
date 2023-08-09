@@ -80,7 +80,7 @@ fn main(){
             let equity = sr.get(3).unwrap();
             let new_equitys:f64 = equity.parse().unwrap();
             equity_bian_map.insert(String::from("time"), Value::from(sr.get(1).unwrap())); 
-            equity_bian_map.insert(String::from("name"), Value::from(8));
+            equity_bian_map.insert(String::from("name"), Value::from(14));
             equity_bian_map.insert(String::from("equity"), Value::from(new_equitys)); 
             equity_bian_map.insert(String::from("type"), Value::from("Papi"));
             equity_histories.push_back(Value::from(equity_bian_map));   
@@ -89,9 +89,9 @@ fn main(){
 
 
     println!("数据{:?}",Vec::from(equity_histories.clone()));
-    // let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
+    let res = trade_mapper::TradeMapper::insert_bian_equity(Vec::from(equity_histories.clone()));
 
-    // println!("插入数据是否成功{}",res);
+    println!("插入数据是否成功{}",res);
 
     
 
