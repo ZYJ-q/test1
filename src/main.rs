@@ -59,13 +59,13 @@ fn main(){
             let equitys:f64 = new_equity.parse().unwrap();
         let time = &data[i].time;
         let new_time = &time[1..time.len()-1];
-        println!("打印时间{}", time);
+        println!("打印时间{}", new_time);
         // let t = NaiveDateTime::parse_from_str(&time[1..time.len()-1], "%Y/%m/%d %H:%M").unwrap();
             let r#type = &data[i].r#type;
             let new_type = &r#type[1..r#type.len()-1];
             // let new_time = format!("{}", t);
             // println!("时间{}", new_time);
-            let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M:%S").unwrap();
+            let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M").unwrap();
         println!("时间1111111111{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
             equity_bian_map.insert(String::from("equity"), Value::from(equitys));
