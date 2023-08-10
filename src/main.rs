@@ -68,8 +68,8 @@ fn main(){
             // let t = NaiveDateTime::parse_from_str(&new_time, "%Y/%m/%d %H:%M").unwrap();
             // let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
         // println!("时间1111111111{}", t);
-        equity_bian_map.insert(String::from("name"), Value::from(27));
-            equity_bian_map.insert(String::from("equity"), Value::from(49681.807012));
+        equity_bian_map.insert(String::from("name"), Value::from(30));
+            equity_bian_map.insert(String::from("equity"), Value::from(49813.729785070005));
             equity_bian_map.insert(String::from("time"), Value::from("2023/08/08 21:57:01"));
             equity_bian_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_bian_map));
