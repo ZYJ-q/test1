@@ -14,7 +14,7 @@ fn main(){
     let data = trade_mapper::TradeMapper::get_bybit_equity().unwrap();
 
     // println!("获取到的权益数据{:?}", data );
-    let len = data.len() / 3;
+    let len = data.len();
 
     for i in 0..len{
         let mut equity_bian_map: Map<String, Value> = Map::new();
