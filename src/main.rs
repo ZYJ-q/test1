@@ -21,7 +21,7 @@ fn main(){
         let name = data[i].name;
         
         if name == 12{
-            let equity = data[i].equity;
+            // let equity = data[i].equity;
             // let new_equity = &equity[1..equity.len()-1];
             // println!("处理之后权益{}", new_equity);
             // let equitys:f64 = new_equity.parse().unwrap();
@@ -44,7 +44,7 @@ fn main(){
 
             
             equity_bian_map.insert(String::from("name"), Value::from(name));
-            equity_bian_map.insert(String::from("equity"), Value::from(equity));
+            // equity_bian_map.insert(String::from("equity"), Value::from(equity));
             equity_bian_map.insert(String::from("time"), Value::from(new_time));
             // equity_bian_map.insert(String::from("type"), Value::from(new_type));
             equity_histories.push_back(Value::from(equity_bian_map));    
@@ -52,7 +52,8 @@ fn main(){
             
 
         } else {
-            let equity = data[i].equity;
+            let equity = &data[i].equity;
+            let equitys = equity.clone();
             // println!("权益{}", equity);
             // let new_equity = &equity[1..equity.len()-1];
             // println!("处理之后权益{}", new_equity);
@@ -69,7 +70,7 @@ fn main(){
             // let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
         // println!("时间1111111111{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
-            equity_bian_map.insert(String::from("equity"), Value::from(equity));
+            equity_bian_map.insert(String::from("equity"), Value::from(equitys));
             equity_bian_map.insert(String::from("time"), Value::from(new_time));
             equity_bian_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_bian_map));

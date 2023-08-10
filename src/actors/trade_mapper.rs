@@ -57,7 +57,7 @@ impl TradeMapper {
     let mut conn = get_connect();
     let res = conn.query_map(
       r"select * from bybit_15m_equity",
-      |(id, name, time, equity)| {
+      |(id, name, equity, time)| {
         ByBitEquity{ id, name, time, equity}
       } 
     ).unwrap();
