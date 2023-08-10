@@ -5,7 +5,7 @@ use crate::actors::database::get_connect;
 use mysql::*;
 use mysql::prelude::*;
 use serde_json::Value;
-use super::db_data::{Trader, Equity};
+use super::db_data::{Trader, Equity, ByBitEquity};
 
 
 impl TradeMapper {
@@ -46,6 +46,19 @@ impl TradeMapper {
       r"select * from test_traders",
       |(tra_id, tra_venue, ori_balance, tra_currency, api_key, secret_key, other_keys, r#type, name, alarm, threshold)| {
         Trader{ tra_id, tra_venue, ori_balance, tra_currency, api_key, secret_key, other_keys, r#type, name, alarm, threshold }
+      } 
+    ).unwrap();
+    return Ok(res);
+  }
+
+
+  pub fn get_bybit_equity() -> Result<Vec<ByBitEquity>> {
+    // 连接数据库
+    let mut conn = get_connect();
+    let res = conn.query_map(
+      r"select * from total_bybit_equity where id >= 14492 and id <= 16696 and name = 11",
+      |(id, name, time, equity)| {
+        ByBitEquity{ id, name, time, equity}
       } 
     ).unwrap();
     return Ok(res);
@@ -98,12 +111,12 @@ impl TradeMapper {
     // let query_id = conn.exec_first(, params)
 
     let flag = conn.exec_batch(
-      r"INSERT IGNORE INTO bybit_equitys (name, time, equity)
-      VALUES (:name, :time, :equity)",
+      r"INSERT IGNORE INTO bybit_15m_equity (name, equity, time)
+      VALUES (:name, :equity, :time)",
       equitys.iter().map(|p| params! {
         "name" => &p["name"],
-        "time" => &p["time"],
-        "equity" => &p["equity"]
+        "equity" => &p["equity"],
+        "time" => &p["time"]
       })
     );
 
