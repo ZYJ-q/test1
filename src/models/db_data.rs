@@ -60,7 +60,7 @@ pub struct ByBitEquity {
     pub id: u64,
     pub name: u64,
     pub time: String,
-    pub equity: String,
+    pub equity: f64,
 }
 
 
