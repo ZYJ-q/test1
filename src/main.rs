@@ -57,7 +57,7 @@ fn main(){
             // println!("权益{}", equity);
             let new_equity = &equity[1..equity.len()-1];
             // println!("处理之后权益{}", new_equity);
-            // let equitys:f64 = new_equity.parse().unwrap();
+            let equitys:f64 = new_equity.parse().unwrap();
         let time = &data[i * 3].time;
         let new_time = &time[1..time.len()-1];
         println!("打印时间{}", new_time);
@@ -70,7 +70,7 @@ fn main(){
             // let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
         // println!("时间1111111111{}", t);
         equity_bian_map.insert(String::from("name"), Value::from(name));
-            equity_bian_map.insert(String::from("equity"), Value::from(new_equity));
+            equity_bian_map.insert(String::from("equity"), Value::from(equitys));
             equity_bian_map.insert(String::from("time"), Value::from(new_time));
             equity_bian_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_bian_map));
