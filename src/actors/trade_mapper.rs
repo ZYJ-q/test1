@@ -57,7 +57,7 @@ impl TradeMapper {
     let mut conn = get_connect();
     let res = conn.query_map(
       r"select * from total_bybit_equity where id >= 19336 and id <= 19590 and name = 11",
-      |(id, name, equity, time)| {
+      |(id, name, time, equity)| {
         ByBitEquity{ id, name, time, equity}
       } 
     ).unwrap();
