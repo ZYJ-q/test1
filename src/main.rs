@@ -86,7 +86,7 @@ fn main(){
             let mut equity_bian_map: Map<String, Value> = Map::new();
             // println!("{}", sr.get(3).unwrap()); 
             let time = sr.get(1).unwrap();
-            let t = NaiveDateTime::parse_from_str(time, "%Y/%m/%d %H:%M").unwrap();
+            let t = NaiveDateTime::parse_from_str(time, "%Y/%m/%d %H:%M:%S").unwrap();
             let date_time = format!("{}", t.format("%Y/%m/%d %H:%M:%S"));
             let equity = sr.get(3).unwrap();
             let new_equitys:f64 = equity.parse().unwrap();
