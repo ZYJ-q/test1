@@ -5,7 +5,7 @@ use net_worth::actors::trade_mapper;
 use serde_json::{Map, Value};
 use net_worth::actors::*;
 use chrono::{DateTime, NaiveDateTime, Utc, Local};
-const CSV_PATH:&str = "./xh01_equity.csv";
+const CSV_PATH:&str = "./xh02_equity.csv";
 
 fn main(){
     init();
@@ -91,7 +91,7 @@ fn main(){
             let equity = sr.get(3).unwrap();
             let new_equitys:f64 = equity.parse().unwrap();
             equity_bian_map.insert(String::from("time"), Value::from(date_time)); 
-            equity_bian_map.insert(String::from("name"), Value::from(7));
+            equity_bian_map.insert(String::from("name"), Value::from(8));
             equity_bian_map.insert(String::from("equity"), Value::from(new_equitys)); 
             equity_bian_map.insert(String::from("type"), Value::from("Futures"));
             equity_histories.push_back(Value::from(equity_bian_map));   
