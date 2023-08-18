@@ -5,7 +5,7 @@ use net_worth::actors::trade_mapper;
 use serde_json::{Map, Value};
 use net_worth::actors::*;
 use chrono::{DateTime, NaiveDateTime, Utc, Local};
-const CSV_PATH:&str = "./zd01_equity.csv";
+const CSV_PATH:&str = "./xzd01_equity.csv";
 
 fn main(){
     init();
